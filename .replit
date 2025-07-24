@@ -2,3 +2,15 @@ run = ["bash", "main.sh"]
 
 hidden = ["node_modules"]
 entrypoint = "WELCOME.md"
+
+[workflows]
+runButton = "Run"
+
+[[workflows.workflow]]
+name = "Run"
+author = 25868489
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "bash main.sh"

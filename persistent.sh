@@ -1,9 +1,11 @@
-PERSISTANT_CONFIG_FOLDER=$(pwd)/n8n-config
+PERSISTENT_CONFIG_FOLDER=$(pwd)/n8n-config
 ORIGINAL_CONFIG_FOLDER=~/.n8n
 
 echo "Loading..."
-rm -r -f $ORIGINAL_CONFIG_FOLDER
-mkdir $PERSISTANT_CONFIG_FOLDER &> /dev/null # make directory if not exist
+rm -rf $ORIGINAL_CONFIG_FOLDER 2>/dev/null || true
+mkdir -p $PERSISTENT_CONFIG_FOLDER
 
-# Creating sysmlink between persistant config folder and original config folder
-ln -s $PERSISTANT_CONFIG_FOLDER $ORIGINAL_CONFIG_FOLDER
+# Creating symlink between persistent config folder and original config folder
+if [ ! -L $ORIGINAL_CONFIG_FOLDER ]; then
+    ln -s $PERSISTENT_CONFIG_FOLDER $ORIGINAL_CONFIG_FOLDER
+fi

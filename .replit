@@ -14,3 +14,7 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "bash main.sh"
+
+[[ports]]
+localPort = 5678
+externalPort = 80
